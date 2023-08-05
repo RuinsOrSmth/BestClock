@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<style>
+  @font-face {
+    font-family: 'digital-clock-font';
+    src: url('DS-DIGIB.TTF');
+  }
+
+  #clock {
+    font-family: digital-clock-font;
+    font-size: 25vw;
+    color: red;
+
+    text-align: center;
+
+    height:100%;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  body {
+    background-color: black;
+  }
+</style>
+
+<body onload="startTime()">
+  <div id="clock"></div>
+  <script>
+    function startTime() {
+      const today = new Date();
+      let h = today.getHours() % 12;
+      let m = today.getMinutes();
+
+      let text = "test";
+      if (m == 0) {
+        text = h;
+      } else if (m == 15) {
+        text = "QUARTER PAST " + h;
+      } else if (m < 30) {
+        text = m + " PAST " + h;
+      } else if (m == 30) {
+        text = "HALF " + h;
+      } else if (m == 45) {
+        text = "QUARTER TO " + ((h + 1) % 12);
+      } else {
+        text = (60 - m) + " TO " + ((h + 1) % 12);
+      }
+
+      document.getElementById('clock').innerHTML = text;
+      setTimeout(startTime, 1000);
+    }
+  </script>
+
+</body>
+
+</html>
