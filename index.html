@@ -37,24 +37,31 @@
 
       let text = "test";
       if (m == 0) {
-        text = h;
+        text = getHourDisplay(h);
       } else if (m == 15) {
-        text = "QUARTER PAST " + h;
+        text = "QUARTER PAST " + getHourDisplay(h);
       } else if (m < 30) {
-        text = m + " PAST " + h;
+        text = m + " PAST " + getHourDisplay(h);
       } else if (m == 30) {
-        text = "HALF " + h;
+        text = "HALF " + getHourDisplay(h);
       } else if (m == 45) {
-        text = "QUARTER TO " + ((h + 1) % 12);
+        text = "QUARTER TO " + getHourDisplay((h + 1) % 12);
       } else {
-        text = (60 - m) + " TO " + ((h % 12) + 1);
+        text = (60 - m) + " TO " + getHourDisplay((h % 12) + 1);
       }
 
       document.getElementById('clock').innerHTML = text;
       setTimeout(startTime, 1000);
     }
+
+    function getHourDisplay(hour) {
+      if (hour == 12) {
+        return "NOON";
+      }
+
+      return hour;
+    }
   </script>
 
 </body>
-
 </html>
