@@ -47,7 +47,7 @@
       } else if (m == 45) {
         text = "QUARTER TO " + ((h + 1) % 12);
       } else {
-        text = (60 - m) + " TO " + ((h + 1) % 12);
+        text = (60 - m) + " TO " + ((h % 12) + 1);
       }
 
       document.getElementById('clock').innerHTML = text;
