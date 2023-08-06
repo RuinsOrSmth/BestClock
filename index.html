@@ -32,7 +32,7 @@
   <script>
     function startTime() {
       const today = new Date();
-      let h = today.getHours() % 12;
+      let h = ((today.getHours() - 1) % 12) + 1;
       let m = today.getMinutes();
 
       let text = "test";
